@@ -37,9 +37,9 @@ switch(apiItems){
   break
 
   case movieThis :
-  var movieName = process.argv[3];
-  getMovie(movieName);
-  // splitMovie(movieName);
+  var movieName = process.argv;
+  // getMovie(finalEntry);
+  splitEntry(movieName);
 
   break
 
@@ -48,17 +48,31 @@ switch(apiItems){
   //failure message if command is invalid
 }
 
-// function splitMovie(str){
-//          var splitMovie = str.split(" ");
+function splitEntry(word){
+  console.log(word);
+  word.splice(0,3);
+  console.log(word);
 
-//          var finalMovietitle = "";
-//          for (var i = 0; i < splitMovie.length; i++){
-//          finalMovietitle += splitMovie[i] + "+";
 
-//          if (i > 2 && i < str.length)
-//          }
-// console.log(finalMovietitle);
-// }
+  
+         var finalEntry = "";
+         for (var i = 0; i < word.length; i++){
+        
+         if (i > 0 && i < word.length){
+          ;
+         finalEntry = finalEntry + " " + word[i];
+      }
+      else {
+
+       finalEntry += word[i];
+
+      }       
+    };
+      console.log("Final Entry: " + finalEntry);
+      // finalEntry = movieName
+      getMovie(finalEntry)
+  };
+        
 
 function getTweets(){
     var params = {screen_name: 'murphyx232'};
@@ -101,7 +115,7 @@ console.log("IMDB URL -- ", imdbUrl)
 
 request(imdbUrl, function(error, response, body) {
   var movieJson = JSON.parse(body)
-  console.log(movieName)
+  // console.log(movieName)
   // If the request is successful (i.e. if the response status code is 200)
   if (!error && response.statusCode === 200) {
     // Parse the body of the site and recover just the imdbRating
